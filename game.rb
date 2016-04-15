@@ -91,7 +91,7 @@ class Game
 
     def set_next_player
         @@accumulated_score = 0
-        @@current_player_id = (@@current_player_id + 1) % 4
+        @@current_player_id = (@@current_player_id + 1) % @num_players
     end
 
     def throw_dice_once(player, num_of_dice = 5)
@@ -189,6 +189,9 @@ end
 
 print "Enter number of players "
 num = gets.chomp
+if num.to_i < 1
+    abort("You must have atleat 1 player to play the game")
+end
 game = Game.new(num.to_i)
 game.start()
 winner = game.winner

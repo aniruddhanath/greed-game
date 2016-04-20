@@ -9,12 +9,12 @@ require "./calculate.rb"
 require "./player.rb"
 require "./game.rb"
 
-print "Enter number of players "
+print "Enter number of players: "
 num = gets.chomp
 if num.to_i < 1
-    abort("You must have atleat 1 player to play the game")
+  abort("You must have atleat 1 player to play the game")
 end
 game = Game.new(num.to_i)
 game.start()
 winner = game.winner
-Log.info("Winner is player-#{winner.id.to_s} with #{winner.score.to_s}".upcase)
+Log.info("Winner is player-#{winner.id + 1} with #{winner.score}".upcase)

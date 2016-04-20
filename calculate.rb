@@ -19,8 +19,8 @@ class Calculate
                 @non_scoring_dice.push(n)
             end
         end
-        @score += hash["1"] * 100
-        @score += hash["5"] * 50
+        @score += hash[:dice_1] * 100
+        @score += hash[:dice_5] * 50
     end
 
     public

@@ -29,7 +29,8 @@ class Game
     end
 
     def store_score(player, is_last_round = false)
-        player.score += @accumulated_score_of_current_user # update actual score
+        # update actual score if accumulated score is greater than 300
+        player.score += @accumulated_score_of_current_user if  @accumulated_score_of_current_user >= 300
         if !is_last_round
             Log.info("Player #{@current_player_id + 1}'s score: #{player.score}")
             set_next_player # over to next player
@@ -63,11 +64,10 @@ class Game
         dice = Dice.new(num_of_dice).values
         calculation = Calculate.new(dice)
         Log.info("Player #{player.id + 1} rolls: #{dice.join(', ')}")
-        Log.info("Score in this round: #{calculation.score}")
+        Log.info("Score in this roll: #{calculation.score}")
         
-        @accumulated_score_of_current_user += calculation.score if calculation.score >= 300
+        @accumulated_score_of_current_user += calculation.score
         Log.info("Total accumulated score: #{@accumulated_score_of_current_user}")
-        Log.debug("Score is not counted towards total-accumulated-score if it's less than 300") if calculation.score < 300
         
         if calculation.score == 0
             @accumulated_score_of_current_user = 0

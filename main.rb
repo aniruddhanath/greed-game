@@ -1,8 +1,3 @@
-# A program that will play the Greed Game.
-# Rules for the game are in GREED_RULES.TXT.
-# 
-# EXTRA CREDIT: http://rubykoans.com/
-
 require "./log.rb"
 require "./dice.rb"
 require "./calculate.rb"
